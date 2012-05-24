@@ -1,0 +1,51 @@
+<% @page_title = 'Teletrack Mobile - Knowledgebase' %>
+<div id="box">
+	
+<div id="links">
+<%= link_to 'Documentation', :controller => 'dociphone' %> |
+<%= link_to 'Logout', log_out_path %>
+</div>
+
+<%= form_tag mobile_path, :method => 'get' do %>
+<table id="search">
+	<tr>	
+		<td id="inputfield">
+          <%= text_field_tag :search, params[:search], :size => 30%>
+          <%= submit_tag "Search", :name => nil %>	
+          <b><%=  if params[:search].nil?  || params[:search] == '' then "Total notes listed: " else  "Total notes found: " end %></b> <%= @ts.size %>		  		
+		</td>
+	</tr>   
+</table>
+<% end %>
+</div>
+
+<table>
+<% @ts.each do |t| %>
+    <div id="summary">
+      <%= link_to 'Top', :controller => 'mobile' %> |	
+      <%= t %> |	
+	  <%= highlight(Ticket.find(t).summary, @searchstring.gsub('%',''), highlighter = '<FONT style="BACKGROUND-COLOR: yellow">\1</FONT>') %>
+	</div>
+      <% @notes = Note.find(:all, :conditions => ['ticket_id = ? ', t], :order => 'created_at DESC') %>
+	  <% for note in @notes %>
+	  <% clean_text = note.note_text.gsub(/\t+/, "  ") %>	  
+	  <table border = 0> 
+	      <tr>
+             <td id="label"><%= note.updated_at.strftime("%Y-%m-%d %I:%M%p") %>&nbsp;&nbsp;&nbsp;<%=h Staff.find(note.staff_id).name %></td>
+          </tr>	  
+	      <tr>
+             <td>
+			    <div class="notes">
+			      <%= highlight(clean_text.force_encoding('utf-8'), @searchstring.gsub('%',''), highlighter = '<FONT  style="BACKGROUND-COLOR: yellow">\1</FONT>') %>
+			    </div>
+			 </td>
+          </tr>
+	  </table>
+	  <% end %>
+<% end %>
+</table>
+
+<br />
+
+
+

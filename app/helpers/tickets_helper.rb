@@ -1,0 +1,3 @@
+module TicketsHelper
+
+end

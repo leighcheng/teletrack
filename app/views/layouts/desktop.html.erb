@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">                   	
+<html>
+    
+	<% if flash[:notice] -%>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end -%>	
+	
+
+<head>
+	<title><%= @page_title %></title>	
+	<%= stylesheet_link_tag "desktop","jqueryFileTree" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tag %>
+  
+	<script type="text/javascript">
+	
+
+		function openFile(file) {
+			window.open(file)
+		}	
+			
+		jQuery(document).ready( function() {	
+		    jQuery('#fileTree').fileTree({ root: '', script: 'jqueryfiletree/content' }, function(file) {
+		       openFile('assets/' + file);
+		    }); 
+		});
+			
+	
+	</script  
+  
+</head>
+
+<body id="admin">
+  <div id="banner">
+    <img src="/assets/odslogo.gif"/>  	
+    <%= @page_title %>
+  </div>
+
+	<%= link_to 'Home', tickets_path %> |	
+	<%= link_to 'New', new_ticket_path %> |
+	<%= link_to 'Search', notes_path %> |
+	<%= link_to 'Documentation', :controller => 'documentation', :action => 'index' %> |		
+	<%= link_to 'Admin', :controller => 'admin', :action => 'index' %> |
+	<%= link_to 'Logout', log_out_path %> |
+	User: <b><%= current_user.name if current_user %></b>
+    
+	<%= yield %>
+</body>
+</html>

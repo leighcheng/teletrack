@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">                   	
+<html>
+
+<head>
+  <link rel="apple-touch-icon" href="assets/odslogo.png" />
+  <title><%= @page_title %></title>
+
+  <!-- Start iPhone -->
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+	<%= stylesheet_link_tag "iphone", "jqueryFileTree" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tag %>
+  <!-- End iPhone -->
+
+  <script type="text/javascript">
+
+
+		function openFile(file) {
+			window.open(file)
+		}	
+			
+		jQuery(document).ready( function() {	
+		    jQuery('#fileTree').fileTree({ root: '', script: 'jqueryfiletree/content' }, function(file) {
+		       openFile('assets/' + file);
+		    }); 
+		});
+			
+
+  </script  
+
+</head>
+
+<body id="mobile">
+	<%= yield %>
+</body>
+</html>

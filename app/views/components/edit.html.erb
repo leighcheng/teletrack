@@ -1,0 +1,12 @@
+<% @page_title = 'Teletrack - Edit Component' %>
+
+<%= form_for(@component) do |f| %>
+  <p>
+    <b>Component name</b><br />
+    <%= f.text_field :component_name %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>

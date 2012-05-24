@@ -1,0 +1,12 @@
+<% @page_title = "Teletrack - Edit Status" %>
+
+<%= form_for(@status) do |f| %>
+  <p>
+    <b>Status name</b><br />
+    <%= f.text_field :status_name %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>

@@ -1,0 +1,12 @@
+<% @page_title = 'Teletrack - New Type' %>
+
+<%= form_for(@type) do |f| %>
+  <p>
+    <b>Type name</b><br />
+    <%= f.text_field :type_name %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

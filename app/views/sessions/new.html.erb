@@ -1,0 +1,16 @@
+<% @page_title = "Teletrack - Login" %>
+<%= form_tag sessions_path do %>
+<table width="100%">
+	<tr>
+    	<td align="right"><%= label_tag :user_name %></td>
+    	<td align="left"><%= text_field_tag :name, params[:name] %></td>
+    </tr>
+    <tr>
+    	<td align="right"><%= label_tag :password %></td>
+    	<td align="left"><%= password_field_tag :password %></td>
+    </tr>
+	<tr>
+    	<td align="center" colspan= "2" class="button"><%= submit_tag "Log in" %></td>
+	</tr>
+</table>
+<% end %>

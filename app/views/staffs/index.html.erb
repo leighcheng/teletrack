@@ -1,0 +1,28 @@
+<% @page_title = 'Teletrack - List Users' %>
+
+<br/>
+
+<table width="100%" border = "0">
+  <tr>
+    <th>ID</th>  	
+    <th>Name</th>
+    <th>Email</th>
+    <th>Password Hash</th> 
+    <td align="center" colspan= "2"><%= link_to 'New', sign_up_path %></th>	
+  </tr>
+
+<% for staff in @staffs %>
+  <tr>
+    <td><%= staff.id %></td>  	
+    <td><%= staff.name %></td>
+    <td><%= staff.email %></td>
+    <td><%= staff.password_hash %></td>     
+    <td><%= link_to 'Edit',  edit_staff_path(staff)  %></td>
+    <td><%= link_to 'Delete', staff, {:confirm => 'Are you sure?', :method => :delete} %></td>	
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

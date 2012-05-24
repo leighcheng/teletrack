@@ -1,0 +1,249 @@
+body { background-color: #fff; color: #333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+  word-wrap: break-word  
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+div.uploadStatus {
+  margin: 5px;
+}
+
+div.progressBar {
+  margin: 5px;
+}
+
+div.progressBar div.border {
+  background-color: #fff;
+  border: 1px solid gray;
+  width: 100%;
+}
+
+div.progressBar div.background {
+  background-color: #333;
+  height: 18px;
+  width: 0%;
+}
+
+#banner {
+  border: 1px solid black;
+  background: #2442b1;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font: small-caps 30px/30px "Times New Roman", serif;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+#banner img {
+  float: right;
+}
+
+#columns {
+  background: #a6caf0;
+}
+
+#main {
+  margin-left: 7em;
+  padding-top: 1ex;
+  padding-left: 2em;
+  background: white;
+}
+
+#side {
+  float: left;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  width: 6em;
+  background: #a6caf0;
+}
+
+#notice {
+  border: 2px solid red;
+  padding: 1em;
+  margin-bottom: 2em;
+  color: #FFFFFF;  
+  background: #2442b1;
+
+  font-size: 130%;  
+}
+
+.browser{
+    background-color:#FFFFFF;
+    border-color:#BBBBBB #FFFFFF #FFFFFF #BBBBBB;
+    border-style:solid;
+    border-width:1px;
+    height:250px;
+    overflow:scroll;
+    padding:5px;
+    width:600px;
+}
+
+.notes{
+	overflow-wrap:normal;
+	white-space:pre-line;
+}
+
+/* Table Style CSS */
+
+
+/*
+Innocent Flower
+*/
+
+#itsthetable {
+	background: #fff url(bg_caption.gif) repeat-x;
+	padding: 0 2em 2em 2em;
+}
+
+table {
+	/* margin: 1em auto; */
+	font: 95%/130% Tahoma, Arial, Helvetica, sans-serif;
+	border-spacing: 0;
+}
+
+table caption {
+	background: url(caption_title.jpg) no-repeat 50% 0;
+	color: #2442b1;
+	font-size: 130%;
+	letter-spacing: .1em;
+	padding: 3.5em 0.2em 2em 0;
+	text-align: right;
+	text-transform: uppercase;
+}
+
+thead th, tbody th {
+	background: #2442b1;
+	color: #fff;
+	font-weight: bold;
+	padding: .2em .7em .2em .8em;
+	text-align: left;
+	border-top: 1px solid #fff;
+	border-right: 1px solid #c6cdd8;
+	border-bottom: 1px solid #c6cdd8;
+	border-left: 1px solid #fff;
+}
+
+thead th {
+	font-size: 1em;
+}
+
+tbody th {
+    background: #2442b1;
+}
+
+tbody tr.odd th {
+	background: #e2e2e2;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+tbody th a, tbody th a:link, tbody th a:hover, tbody th a:active {
+	color: #2442b1;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 1.1em;
+}
+
+tbody th a:hover {
+	text-decoration: underline;
+}
+
+td a:link {
+	color: #537fc3;
+}
+
+th a:hover, td a:hover {
+	text-decoration: none;
+}
+
+td {
+	background: #f3f8fd;
+	color: #203276;
+	border-top: 1px solid #fff;
+	border-right: 1px solid #c6cdd8;
+	border-bottom: 1px solid #c6cdd8;
+	border-left: 1px solid #fff;
+	padding: 0.6em 0.8em 0.8em 0.8em;
+}
+
+td .no_border {
+	background: #f3f8fd;
+	color: #203276;
+	border-top: 0px solid #fff;
+	border-right: 0px solid #c6cdd8;
+	border-bottom: 0px solid #c6cdd8;
+	border-left: 0px solid #fff;
+	padding: 0em 0em 0em 0em;
+}
+
+td:hover {
+	background: #f3f8fd;
+}
+
+tr.odd td {
+	background: #f8f8f8;
+	color: #444;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+tr.odd td:hover {
+	background: #f8f8f8;
+}
+
+tfoot th, tfoot td {
+	background: #444 !important;
+	padding: .5em .5em .5em .5em !important;
+	color: #fff;
+}
+
+#label{
+  background-color: #55555;
+  font-size: 13px;
+  font-weight: bold;    
+}
+

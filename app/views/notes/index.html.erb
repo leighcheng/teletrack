@@ -1,0 +1,86 @@
+<% @page_title = 'Teletrack - Search Notes' %>
+
+<%= form_tag notes_path, :method => 'get' do %>
+<table width="100%" border = "1">
+	<tr >
+		<th colspan = "33%">
+		  Assigned To:	
+		</th>
+		<th colspan = "33%">
+		  Status:	
+		</th>		
+		<th colspan = "33%">
+		  Search Keyword:	
+		</th>		
+	</tr>
+	<tr>
+		<td colspan = "33%">
+          <select name="assigned" >
+          <OPTION></OPTION>
+          <% for row in Staff.find(:all, :order => "name")  %>
+            <% if row.name == session['assigned'] %>
+              <OPTION selected><%= row.name %></OPTION>
+            <% else %>		  
+              <OPTION><%= row.name %></OPTION>
+			<% end %>
+          <% end%>
+          </select>
+		</td>	
+		<td colspan = "33%">
+          <select name="status" >
+          <OPTION></OPTION>
+          <% for row in Status.find(:all, :order => "status_name")  %>
+            <% if row.status_name == session['status'] %>
+              <OPTION selected><%= row.status_name %></OPTION>
+            <% else %>		  
+              <OPTION><%= row.status_name %></OPTION>
+			<% end %>
+          <% end%>
+          </select>
+		</td>			
+		<td colspan = "33%">
+          <%= text_field_tag :search, params[:search], :size => 35 %>
+          <%= submit_tag "Search", :name => nil %>	
+          <b><%=  if params[:search].nil?  || params[:search] == '' then "Total notes listed: " else  "Total notes found: " end %></b> <%= @ts.size %>		  		
+		</td>
+	</tr>   
+</table>
+<% end %>
+
+<table width="100%">
+  <tr>
+    <th colspan = "10%">Ticket</th>
+    <th colspan = "30%">Summary</th>
+    <th colspan = "60%" align = "left"> Notes</th>
+  </tr>
+  
+<% @ts.each do |t| %>
+  <tr>
+	<td valign="top" colspan = "10%"><%= link_to t, :controller => 'tickets', :action => 'edit', :id => t %></td>
+	<td valign="top" colspan = "30%"><%= highlight(Ticket.find(t).summary, @searchstring.gsub('%',''), highlighter = '<FONT style="BACKGROUND-COLOR: yellow">\1</FONT>') %></td>	
+	<td valign="top" colspan = "60%" >
+	  <table valign="top" width = "100%">
+      <% @notes = Note.find(:all, :conditions => ['ticket_id = ? ', t], :order => 'created_at DESC') %>
+	  <% for note in @notes %>
+		<tr>
+		  <td valign="top" width = "100%" class="no_border">
+			<div id="label">
+			<%= note.updated_at.strftime("%Y-%m-%d %I:%M%p") %>&nbsp;&nbsp;&nbsp;<%= current_user.name %>
+			</div>
+			<pre><div class="notes">
+			<%= highlight(note.note_text.force_encoding('utf-8'), @searchstring.gsub('%',''), highlighter = '<FONT
+			               style="BACKGROUND-COLOR: yellow">\1</FONT>') %>
+			</div></pre>
+		  </td>
+	    </tr>
+	  <% end %>
+	  </table>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+

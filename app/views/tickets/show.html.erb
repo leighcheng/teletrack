@@ -1,0 +1,40 @@
+<% @page_title = 'Teletrack - Show Ticket' %>
+
+<p>
+  <b>Type:</b>
+  <%=h Type.find(@ticket.type_id).type_name %>
+</p>
+
+<p>
+  <b>Component:</b>
+  <%=h Component.find(@ticket.component_id).component_name %>
+</p>
+
+<p>
+  <b>Priority:</b>
+  <%=h Priority.find(@ticket.priority_id).priority_name %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h Status.find(@ticket.status_id).status_name %>
+</p>
+
+<p>
+  <b>Created by:</b>
+  <%=h Staff.find(@ticket.created_id).name %>
+</p>
+
+<p>
+  <b>Assigned to:</b>
+  <%=h Staff.find(@ticket.assigned_id).name %>
+</p>
+
+<p>
+  <b>Summary:</b>
+  <%=h @ticket.summary %>
+</p>
+
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>

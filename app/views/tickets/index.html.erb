@@ -1,0 +1,67 @@
+<% @page_title = "Teletrack - Home" %>
+
+<%= form_tag tickets_path, :method => 'get' do %>
+
+<table width="100%" border = "1">
+	<tr class="odd" >
+		<td>
+        <select name="searchwhat" >
+        <% [ "Type", 
+             "Status",         
+             "Summary", 
+             "Ticket ID", 
+             "Assigned To", 
+             "Created By",    
+             "Component", 
+             "Priority"].each do |row| %>
+          <% if row == session['searchwhat'] %>
+            <OPTION selected><%= row %></OPTION>
+          <% else %>
+            <OPTION><%= row %></OPTION>
+          <% end %>
+        <% end%>
+        </select>	
+			
+        <%= text_field_tag :search, params[:search]||"Project" %>
+        <%= submit_tag "Search", :name => nil %>
+		Total tickets found:  <%= @ticket_count %>
+	    </td>
+	</tr>
+</table>	
+
+<% end %>
+
+<table width="100%" border = "1">
+  <tr>
+  	<th>Ticket#</th>
+    <th>Type</th>
+    <th>Component</th>
+    <th>Priority</th>
+    <th>Status</th>
+    <th>Created</th>
+    <th>Assigned</th>
+	<th colspan = "4">Updated Date</th>
+  </tr>	
+<% odd_or_even=0 %> 
+<% for ticket in @tickets %>
+  <% odd_or_even=1- odd_or_even %>  
+  <tr class="<%= 'odd' if odd_or_even %>">
+    <td align = "center"><%= ticket.id %></td> 
+    <td align = "center"><%= Type.find(ticket.type_id).type_name  %></td>
+	<td align = "center"><%= Component.find(ticket.component_id).component_name  %></td>
+	<td align = "center"><%= Priority.find(ticket.priority_id).priority_name  %></td>
+	<td align = "center"><%= Status.find(ticket.status_id).status_name  %></td>
+	<td align = "center"><%= Staff.find(ticket.created_id).name %></td>
+	<td align = "center"><%= Staff.find(ticket.assigned_id).name  %></td>     
+    <td align = "center" colspan = "4"><%= ticket.updated_at.strftime("%Y-%m-%d %I:%M%p")  %></td>                                
+  </tr>
+  <tr>
+    <td colspan = "7"><%= link_to ticket.summary, :controller => 'tickets', :action => 'edit', :id => ticket %></td>
+    <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+    <td><%= link_to_if(is_admin || is_owner(ticket.created_id), 'Delete', ticket, {:confirm => 'Are you sure?', :method => :delete}) %></td>   	  </tr>
+<% 
+end %>
+</table>
+<br />
+
+<%= paginate @tickets %>

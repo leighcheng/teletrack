@@ -1,0 +1,17 @@
+<% @page_title = 'Teletrack - Edit Note' %>
+
+<%= form_for(@note) do |f| %>
+
+  <p>
+    <b>Ticket Summary: </b>
+    <%= Ticket.find(:first, :conditions => ['id = ? ', @note.ticket_id]).summary %>
+  </p>
+  <p>
+    <b>Note</b><br />
+    <%= f.text_area :note_text, "cols" => 120, "rows" => 15 %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>

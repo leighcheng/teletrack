@@ -1,0 +1,13 @@
+<% @page_title = "Teletrack - Edit Type" %>
+
+<%= form_for(@type) do |f| %>
+  <p>
+    <b>Type name</b><br />
+    <%= f.text_field :type_name %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+

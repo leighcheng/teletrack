@@ -1,0 +1,22 @@
+<% @page_title = 'Teletrack - List Status' %>
+
+<br/>
+
+<table border="1">
+  <tr>
+    <th>Status name</th>
+    <td align="center" colspan= "2"><%= link_to 'New', new_status_path %></th>	
+  </tr>
+
+<% for status in @statuses %>
+  <tr>
+    <td><%=h status.status_name %></td>
+    <td><%= link_to 'Edit', edit_status_path(status) %></td>
+    <td><%= link_to 'Delete', status, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

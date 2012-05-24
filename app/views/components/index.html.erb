@@ -1,0 +1,22 @@
+<% @page_title = 'Teletrack - List Components' %>
+
+<br/>
+
+<table border = "1">
+  <tr>
+    <th>Component name</th>
+	<td align="center" colspan= "2"><%= link_to 'New', new_component_path %></th>
+  </tr>
+
+<% for component in @components %>
+  <tr>
+    <td><%=h component.component_name %></td>
+    <td><%= link_to 'Edit', edit_component_path(component) %></td>
+    <td><%= link_to 'Delete', component, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

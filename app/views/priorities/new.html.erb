@@ -1,0 +1,13 @@
+<% @page_title = 'Teletrack - New Priority' %>
+
+<%= form_for(@priority) do |f| %>
+  <p>
+    <b>Priority name</b><br />
+    <%= f.text_field :priority_name %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+

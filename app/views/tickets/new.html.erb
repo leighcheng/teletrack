@@ -1,0 +1,60 @@
+<% @page_title = "Teletrack - New Ticket" %>
+
+<%= form_for(@ticket) do |f| %>
+
+<table width="100%" border="1">  
+  <tr width="100%"  class = "odd">
+  	<td align="right">
+  		Type:
+    </td>
+    <td align="left">
+	  <% @ticket.type_id = Type.find(:first, :conditions => " type_name = 'Project' ").id %>      	
+	  <%= collection_select("ticket","type_id", Type.find(:all, :order => "type_name"), :id, :type_name) %>
+    </td>
+  	<td align="right">
+  		Component:
+    </td>	
+    <td align="left">
+	  <% @ticket.component_id = Component.find(:first, :conditions => " component_name = 'Cross-System' ").id %>      	
+      <%= collection_select("ticket","component_id", Component.find(:all, :order => "component_name"), :id, :component_name) %>
+    </td>
+  	<td align="right">
+  		Priority:
+    </td>	
+    <td align="left">
+	  <% @ticket.priority_id = 2 %>      	
+	  <%= collection_select("ticket","priority_id", Priority.find(:all, :order => "priority_name"), :id, :priority_name) %>    	
+    </td>                
+  </tr>
+  <tr width="100%" class = "odd">
+    <td align="right">
+  		Status:
+    </td>
+    <td align="left">
+	  <% @ticket.status_id = Status.find(:first, :conditions => " status_name = 'Assigned' ").id %>     	
+	  <%= collection_select("ticket","status_id", Status.find(:all, :order => "status_name"), :id, :status_name) %>    	
+    </td>
+	<td align="right">
+  		Assigned To:
+    </td>
+    <td align="left"> 	
+	  <% @ticket.assigned_id = session[:staff_id] %> 	
+	  <%= collection_select("ticket","assigned_id", Staff.find(:all, :order => "name"), :id, :name) %>    	 	
+    </td>    
+    	<td align="right">
+  		Created By:
+    </td>
+    <td align="left">
+        <%= Staff.find(current_user).name %>
+    </td>	            
+  </tr>
+</table>  
+<p>
+          <b>Summary</b><br />
+          <%= f.text_field :summary, :size => "100%" %>
+</p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

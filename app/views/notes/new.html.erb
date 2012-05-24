@@ -1,0 +1,25 @@
+<% @page_title = "Teletrack - New Note" %>
+
+<%= form_for(@note) do |f| %>
+
+  <% @note.ticket_id = params[:ticket_id] %>
+  <% @note.staff_id = session[:staff_id] %>  
+  
+  <p>
+    <b>Ticket ID: <%= params[:ticket_id] %> </b><br />
+  </p>
+  
+  <%= f.text_field :ticket_id, :readonly => true, :type => "hidden" %>
+  <%= f.text_field :staff_id, :readonly => true,  :type => "hidden" %>
+
+  <p>
+    <b>Note</b><br />
+    <%= f.text_area :note_text,  "cols" => 120, "rows" => 15 %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', edit_ticket_path(params[:ticket_id])  %>

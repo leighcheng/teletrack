@@ -1,0 +1,50 @@
+<% @page_title = "Teletrack - Administration" %>
+
+<br/>
+
+<table border = "1">
+  <tr>
+    <th width = "250">Configurations</th>
+    <th width = "250">Tools (Admin Only)</th>	
+  </tr>
+  <tr>
+    <td align="center">
+      <table>
+      	<tr>
+      	  <td>
+            <%= link_to_if is_admin, 'Users', staffs_path %>
+          </td>		  		
+        </tr>
+      	<tr>
+      	  <td>      		
+            <%= link_to_if is_admin,  'Components', components_path %>
+          </td>						
+        </tr>
+        <tr>
+      	  <td>          	
+            <%= link_to_if is_admin,  'Types', types_path  %>
+          </td>					
+        </tr>
+      	<tr>
+      	  <td>        		
+            <%= link_to_if is_admin,  'Status', statuses_path %>
+          </td>			
+        </tr>
+      	<tr>
+      	  <td>        		
+            <%= link_to_if is_admin,  'Priorities', priorities_path %>
+          </td>							
+        </tr>		
+      </table>    	
+	</td>
+    <td align="center"> 
+      <table>
+        <tr><td><%= link_to_if(is_admin,  'Backup Data', :action => 'backup_data') %></td></tr>
+        <tr><td><%= link_to_if(is_admin,  'Backup Application', :action => 'backup_app') %></td></tr>
+      </table> 	   
+    </td>
+  </tr>  
+</table>
+
+
+

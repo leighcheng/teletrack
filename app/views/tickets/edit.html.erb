@@ -1,0 +1,93 @@
+<% @page_title = 'Teletrack - Editing Ticket #' + @ticket_id.to_s %>
+
+<%= form_for(@ticket) do |f| %>
+
+    <%= f.submit "Update" %>
+  	<%= link_to 'New note', new_note_path(:ticket_id => @ticket_id) %> 
+<p>  
+<table border="1"  width="100%">
+<tr><td>
+	
+<table width="100%" border="1">  
+  <tr class = "odd">
+  	<td align="right">
+  		Type:
+    </td>
+    <td align="left">
+	  <%= collection_select("ticket","type_id", Type.find(:all, :order => "type_name"), :id, :type_name) %>
+    </td>
+  	<td align="right">
+  		Component:
+    </td>	
+    <td align="left">
+      <%= collection_select("ticket","component_id", Component.find(:all, :order => "component_name"), :id, :component_name) %>
+    </td>
+  	<td align="right">
+  		Priority:
+    </td>	
+    <td align="left">
+	  <%= collection_select("ticket","priority_id", Priority.find(:all, :order => "priority_name"), :id, :priority_name) %>    	
+    </td>                
+  </tr>
+  <tr  class = "odd">
+    <td align="right">
+  		Status:
+    </td>
+    <td align="left">
+	  <%= collection_select("ticket","status_id", Status.find(:all, :order => "status_name"), :id, :status_name) %>    	
+    </td>
+	<td align="right">
+  		Assigned To:
+    </td>
+    <td align="left">
+	  <%= collection_select("ticket","assigned_id", Staff.find(:all, :order => "name"), :id, :name) %>  
+      <%= f.submit "Email", {:name => 'send_email'} %>	  	   	 	
+    </td> 	
+	<td align="right">
+  		Created By: 
+    </td>
+    <td align="left">
+	  <%= Staff.find(@ticket.created_id).name %>
+    </td>	               
+  </tr>
+  <tr class = "odd">
+  	<td align="right">Summary:</td>	
+    <td colspan = "5"><%= f.text_field :summary, :size => "150%" %></td>	
+  </tr>
+</table> 
+</td></tr>
+
+
+<tr><td>
+
+<table width="100%" border = "1">
+<% for note in @notes.reverse %>
+  <tr>
+  	<td><b><%= note.updated_at.strftime("%Y-%m-%d %I:%M%p") %></b></td>
+	<td colspan = "2" align = "center"><%= Staff.find(note.staff_id).name %></td>
+  </tr>	
+  <tr>
+    <td>
+    	<pre>
+		<div class="notes">       	
+      		<%= note.note_text.force_encoding('utf-8') %>
+      	</div>
+      	</pre>
+  	</td>
+    <td valign = "top"><%= link_to_if(is_admin || is_owner(note.staff_id), 'Edit', { :controller => "notes", :action => "edit", :id => note }) %></td>	
+    <td valign = "top"><%= link_to_if(is_admin || is_owner(note.staff_id), 'Delete', note, {:confirm => 'Are you sure?', :method => :delete}) %></td> 
+  </tr>	
+<% end %>
+</table>
+
+	
+</td></tr>
+</table>
+
+<hr>
+
+  <p>
+    <%= f.submit "Update" %>
+  	<%= link_to 'New note', new_note_path(:ticket_id => @ticket_id) %> 
+  </p>
+<% end %>

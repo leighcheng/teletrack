@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">                   	               	
+<html>
+    
+	<% if flash[:notice] -%>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end -%>	
+	
+
+<head>
+    <link rel="apple-touch-icon" href="assets/odslogo.png" />	
+	<title><%= @page_title %></title>	
+	<%= stylesheet_link_tag "desktop" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tag %>
+	
+    <!-- Start iPhone -->
+      <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <!-- End iPhone -->
+</head>
+ 
+<body>
+  <div id="banner">
+    <img src="assets/odslogo.gif"/>  	
+    <%= @page_title %>
+  </div>
+  <%= yield %>
+</body>
+</html>
+

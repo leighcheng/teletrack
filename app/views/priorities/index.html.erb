@@ -1,0 +1,21 @@
+<% @page_title = 'Teletrack - List Priorities' %>
+
+<br/>
+
+<table border = "1">
+  <tr>
+    <th>Priority name</th>
+	<td align="center" colspan= "2"><%= link_to 'New', new_priority_path %></th>
+  </tr>
+
+<% for priority in @priorities %>
+  <tr>
+    <td><%=h priority.priority_name %></td>
+    <td><%= link_to 'Edit', edit_priority_path(priority) %></td>
+    <td><%= link_to 'Delete', priority, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

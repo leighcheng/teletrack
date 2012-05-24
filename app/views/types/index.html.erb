@@ -1,0 +1,22 @@
+<br/>
+
+<% @page_title = 'Teletrack - List Types' %>
+
+<table border = 1>
+  <tr>
+    <th>Type name</th>
+    <td align="center" colspan= "2"><%= link_to 'New', new_type_path %></td>	
+  </tr>
+
+<% for type in @types %>
+  <tr>
+    <td><%=h type.type_name %></td>
+    <td><%= link_to 'Edit', edit_type_path(type) %></td>
+    <td><%= link_to 'Delete', type, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+
+
+
