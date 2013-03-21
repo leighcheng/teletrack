@@ -11,7 +11,8 @@ doc/app
 *~
 .DS_Store
 *.pdf
-*.bat
+*.bat         
+Gemfile.lock
 
 # Compiled source #
 ###################
