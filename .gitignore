@@ -13,7 +13,7 @@ doc/app
 *.pdf
 *.bat         
 Gemfile.lock
-app/*.*
+app/assets/docs/*.*
 
 # Compiled source #
 ###################
