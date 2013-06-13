@@ -34,7 +34,7 @@ class TicketsController < ApplicationController
         @searchstring = Staff.find(:first, :conditions => {"name" => "#{params[:search]}" })    
       else
         @searchwhat = 'type_id = ? '  
-        @searchstring = Type.find(:first, :conditions => {"type_name" => "Project" })     
+        @searchstring = Type.find(:first, :conditions => {"type_name" => "#{params[:search]||'Project'}" })     
     end
 
     @tickets = Ticket.where(@searchwhat, @searchstring).order("id desc").page(params[:page]).per(7)                         
