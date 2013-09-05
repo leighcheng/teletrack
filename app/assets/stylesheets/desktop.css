@@ -124,7 +124,7 @@ div.progressBar div.background {
 
 .notes{
 	overflow-wrap:normal;
-	white-space:pre-line;
+	white-space:pre-wrap;
 }
 
 /* Table Style CSS */
