@@ -105,8 +105,8 @@ div.progressBar div.background {
   border: 2px solid red;
   padding: 1em;
   margin-bottom: 2em;
-  color: #FFFFFF;  
-  background: #2442b1;
+  color: #2442b1;  
+  background: #ffffff;
 
   font-size: 130%;  
 }
