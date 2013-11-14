@@ -68,12 +68,12 @@ div.progressBar div.background {
 }
 
 #banner {
-  border: 1px solid black;
-  background: #2442b1;
+  border:none
+  background: #FFFFFF;
   padding-top: 20px;
   padding-bottom: 20px;
   font: small-caps 30px/30px "Times New Roman", serif;
-  color: #FFFFFF;
+  color: #2442b1;
   text-align: center;
 }
 
