@@ -8,7 +8,7 @@ gem 'rails', '3.2.1'
 gem 'mysql2'
 gem 'kaminari'
 
-gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'bcrypt'
 
 
 # Gems used only for assets and not required

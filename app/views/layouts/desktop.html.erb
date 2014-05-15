@@ -13,18 +13,17 @@
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tag %>
   
-	<script type="text/javascript">
+	<script type="text/javascript" src="https://github.com/jashkenas/coffee-script/raw/master/extras/coffee-script.js"></script>
+  
+	<script type="text/coffeescript">
 	
 
-		function openFile(file) {
+		openFile = (file) ->
 			window.open(file)
-		}	
+
 			
-		jQuery(document).ready( function() {	
-		    jQuery('#fileTree').fileTree({ root: '', script: 'jqueryfiletree/content' }, function(file) {
-		       openFile('assets/' + file);
-		    }); 
-		});
+		jQuery(document).ready ->
+		    jQuery('#fileTree').fileTree({ root: '', script: 'jqueryfiletree/content' }, (file) ->  openFile('assets/' + file))
 			
 	
 	</script  
