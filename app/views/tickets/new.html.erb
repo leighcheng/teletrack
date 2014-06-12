@@ -15,7 +15,7 @@
   		Component:
     </td>	
     <td align="left">
-	  <% @ticket.component_id = Component.find(:first, :conditions => " component_name = 'Cross-System' ").id %>      	
+	  <% @ticket.component_id = Component.find(:first).id %>      	
       <%= collection_select("ticket","component_id", Component.find(:all, :order => "component_name"), :id, :component_name) %>
     </td>
   	<td align="right">
@@ -30,7 +30,7 @@
     <td align="right">
   		Status:
     </td>
-    <td align="left">
+    <td align="left"
 	  <% @ticket.status_id = Status.find(:first, :conditions => " status_name = 'Assigned' ").id %>     	
 	  <%= collection_select("ticket","status_id", Status.find(:all, :order => "status_name"), :id, :status_name) %>    	
     </td>
