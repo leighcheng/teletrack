@@ -30,7 +30,7 @@
     <td align="right">
   		Status:
     </td>
-    <td align="left"
+    <td align="left">
 	  <% @ticket.status_id = Status.find(:first, :conditions => " status_name = 'Assigned' ").id %>     	
 	  <%= collection_select("ticket","status_id", Status.find(:all, :order => "status_name"), :id, :status_name) %>    	
     </td>
